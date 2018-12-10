@@ -56,6 +56,15 @@ class AdminPsMboModuleController extends ModuleAdminController
     public function initContent()
     {
         parent::initContent();
+        $this->context->smarty->assign(array(
+            'appLink' => Tools::getShopDomainSsl(true) . __PS_BASE_URI__ . 'modules/' . $this->module->name . '/' . $this->module->name . '/dist/app.js',
+        ));
+        $this->setTemplate($this->module->template_dir . 'v-page.tpl');
+    }
+
+    /* public function initContent()
+    {
+        parent::initContent();
 
         if (Tools::getIsset('filterCategoryTab')) {
             $this->context->smarty->assign(array(
@@ -78,6 +87,7 @@ class AdminPsMboModuleController extends ModuleAdminController
         }
 
         $this->context->smarty->assign(array(
+            'appLink' => Tools::getShopDomainSsl(true) . __PS_BASE_URI__ . 'modules/' . $this->module->name . '/' . $this->module->name . '/dist/app.js',
             'shop_name' => Configuration::get('PS_SHOP_NAME'),
             'img_dir' => _PS_IMG_,
             'iso' => $this->context->language->iso_code,
@@ -122,8 +132,8 @@ class AdminPsMboModuleController extends ModuleAdminController
         );
 
         $this->module->setMedia($aJsDef, $aJs, $aCss);
-        $this->setTemplate($this->module->template_dir . 'page.tpl');
-    }
+        $this->setTemplate($this->module->template_dir . 'v-page.tpl');
+    } */
 
     protected function addonsList($request)
     {

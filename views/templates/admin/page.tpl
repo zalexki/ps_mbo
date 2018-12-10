@@ -40,6 +40,8 @@
     </script>
 {/if}
 
+{$appLink}
+
 <div id="psmbo" class="row justify-content-center">
 
     <div class="col-lg-10 module-catalog-page">
