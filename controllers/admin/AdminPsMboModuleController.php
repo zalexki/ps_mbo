@@ -141,6 +141,39 @@ class AdminPsMboModuleController extends ModuleAdminController
         return json_encode($results);
     }
 
+    /*
+     *  string(9) "must-have" 
+     *      array(1) { ["format"]=> string(4) "json" } 
+     *  string(7) "service" 
+     *      array(1) { ["format"]=> string(4) "json" } 
+     *  string(6) "native" 
+     *      array(1) { ["format"]=> string(4) "json" } 
+     *  string(10) "native_all" 
+     *      array(1) { ["format"]=> string(4) "json" } 
+     * 
+     * array(7) {
+        ["format"]=>
+        string(4) "json"
+        ["iso_lang"]=>
+        string(2) "fr"
+        ["iso_code"]=>
+        string(2) "FR"
+        ["version"]=>
+        string(7) "1.7.5.0"
+        ["shop_url"]=>
+        string(16) "http://localhost"
+        ["method"]=>
+        string(7) "listing"
+        ["action"]=>
+        string(9) "must-have"
+        }
+
+        api-addons.prestashop.com
+     */
+    public function displayAjaxgetMboModulesList() {
+
+    }
+
     public function displayAjaxGetModulesList()
     {
         $filters = new AddonListFilter();
