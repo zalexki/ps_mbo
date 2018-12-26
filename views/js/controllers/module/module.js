@@ -61,7 +61,7 @@ $(document).ready(function() {
 		url: admin_module_ajax_url_psmbo,
 		data: {
 			ajax : true,
-			action : 'GetModulesList',
+			action : 'GetMboModulesList',
 		},
 		beforeSend: function() {
 			$('#psmbo .btn-primary-reverse.spinner').css({

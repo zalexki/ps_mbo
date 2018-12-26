@@ -24,6 +24,8 @@
  * International Registered Trademark & Property of PrestaShop SA
  **/
 
+use GuzzleHttp\Client;
+
 use PrestaShop\PrestaShop\Adapter\SymfonyContainer;
 use PrestaShop\PrestaShop\Core\Addon\AddonListFilter;
 use PrestaShop\PrestaShop\Core\Addon\AddonListFilterStatus;
@@ -167,13 +169,41 @@ class AdminPsMboModuleController extends ModuleAdminController
         ["action"]=>
         string(9) "must-have"
         }
-
+    
         api-addons.prestashop.com
      */
-    public function displayAjaxgetMboModulesList() {
+    public function displayAjaxGetMboModulesList() {
+/*       TODO : uncomment  $baseUrlToCall = 'https://addons-services-integration.appspot.com/api/listing/';
+        $options = array('native'); */
+        // $options = array('musthave', 'service', 'native', 'native_all');
+        // native_all = return $this->marketplaceClient->setIsoCode('all')->getNativesModules();
 
+/*         $client = new Client(array(
+            'base_url' => $baseUrlToCall
+        ));
+
+        foreach ($options as $option) {
+            $response = $client->get($option, array(
+                'query' => array(
+                    'format' => 'json',
+                    'iso_lang' => $this->context->language->iso_code,
+                    'iso_code' => strtoupper($this->context->language->iso_code),
+                    'version' => '1.7.5.0',
+                    'shop_url' => ''
+                )
+            ));
+            $jsonResponse = $response->json();
+
+            file_put_contents('/var/www/PrestaShop/modules/ps_mbo/native.json', json_encode($jsonResponse));
+
+        } */
+
+        $response = json_decode(file_get_contents('/var/www/PrestaShop/modules/ps_mbo/native.json'), true);
+        var_dump($response);
+
+        die('');
     }
-
+    
     public function displayAjaxGetModulesList()
     {
         $filters = new AddonListFilter();
@@ -197,7 +227,7 @@ class AdminPsMboModuleController extends ModuleAdminController
         $categories = $container->get('prestashop.categories_provider')->getCategoriesMenu($modules);
 
         foreach ($categories['categories']->subMenu as &$category) {
-            $category->name = $this->trans($category->name, array(), 'Admin.Modules.Feature');
+            $category->name = html_entity_decode($this->trans($category->name, array(), 'Admin.Modules.Feature'));
         }
 
         // In newest versions of PrestaShop, a AddonsCollection can be returned.
