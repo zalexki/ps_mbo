@@ -56,10 +56,19 @@ class AdminPsMboModuleController extends ModuleAdminController
     public function initContent()
     {
         parent::initContent();
+
+        Media::addJsDef(array(
+            'adminAjaxController' => $this->module->getControllerLink('AdminPsMboModule')
+        ));
+
         $this->context->smarty->assign(array(
             'appLink' => Tools::getShopDomainSsl(true) . __PS_BASE_URI__ . 'modules/' . $this->module->name . '/' . $this->module->name . '/dist/app.js',
         ));
         $this->setTemplate($this->module->template_dir . 'v-page.tpl');
+    }
+
+    public function ajaxProcessAxios() {
+        $this->ajaxDie(json_encode('success'));
     }
 
     /* public function initContent()

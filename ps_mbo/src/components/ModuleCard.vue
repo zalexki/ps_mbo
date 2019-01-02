@@ -26,14 +26,14 @@
         <hr>
 
         <ModuleRating 
-            rating="35"
-            nb_rating="245"
+            :rating="rating"
+            :nb_rating="nb_rating"
         />
 
-        <div class="mbo-price-wrapper">
-            <div class="mbo-price-currency">{{ currency }}</div>
-            <div class="mbo-price-number">{{ price }}</div>
-        </div>
+        <ModulePrice
+            :price="price"
+            :currency="currency"
+        />
 
         <div class="mbo-action-buttons">
             <button class="btn btn-default">Discover</button>
@@ -43,11 +43,12 @@
 
 <script>
     import ModuleRating from './ModuleRating.vue';
+    import ModulePrice from './ModulePrice.vue';
 
     export default {
         name: 'ModuleCard',
         components: {
-            ModuleRating
+            ModuleRating, ModulePrice
         },
         props: ['logo', 'title', 'version', 'author', 'description', 'badge_img', 'badge_label', 'rating', 'nb_rating', 'price', 'currency']
     }
@@ -114,5 +115,29 @@
         font-size: .9rem;
         min-height: 30px;
     }
+
+    .mbo-action-buttons button {
+        color: #19a9c6;
+        background-color: transparent;
+        border-color: #19a9c6;
+        box-shadow: none;
+        width: 100%!important;
+        font-size: .625rem;
+        font-weight: 600;
+        border-radius: .063rem;
+        line-height: 1.5;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .mbo-action-buttons { width: 100%; margin-top: 45px; }
+
+    .mbo-action-buttons button:hover { 
+        color: #fff;
+        background-color: #3ed2f0!important;
+        border-color: #3ed2f0!important;
+        box-shadow: none;
+    }
+
+    .mbo-logo { width: 45px; height: 45px; }
 
 </style>

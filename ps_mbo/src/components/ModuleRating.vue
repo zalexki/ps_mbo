@@ -1,7 +1,7 @@
 <template>
     <div class="module-rating-wrapper">
         <div :class="ratingClass"></div>
-        <div class="mbo-rating-number">({{ nb_rating }})</div>
+        <div class="module-rating-number">({{ nb_rating }})</div>
     </div>
 </template>
 
@@ -18,6 +18,16 @@
 </script>
 
 <style scoped>
+
+    .module-rating-number {
+        color: #6c868e;
+        font-size: 1.1em;
+        font-weight: 400;
+        position: relative;
+        left: 70px;
+    }
+    
+    .module-rating-wrapper { float: left; }
     .module-rating-stars { position: relative; }
 
     .module-rating-stars::before {
