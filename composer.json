@@ -12,6 +12,13 @@
 	"require": {
 		"php": ">=5.6.0"
 	},
+    "autoload": {
+		"classmap" : [
+			"classes",
+			"controllers",
+			"ps_mbo.php"
+		]
+	},
 	"config": {
 		"preferred-install": "dist"
 	},
